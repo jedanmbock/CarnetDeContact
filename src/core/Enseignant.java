@@ -5,7 +5,10 @@
  */
 package core;
 
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Date;
 
 /**
  *
@@ -27,4 +30,17 @@ public class Enseignant extends Contact{
         this.statut = statut;
     }
     
+    @Override
+    public void insertIntoBD(Connection connect){
+        try{
+            Statement statement = connect.createStatement();
+            statement.executeUpdate("insert into Enseignant values ('"+super.getCode()+
+                    "','"+super.getNom()+"','"+super.getDateNaissance()+
+                    "','"+super.getAddress()+"','"+
+                    super.getEmail()+"','"+
+                    super.getTelNumber()+"','"+statut+"');");
+        }catch(SQLException sqlex){
+            System.out.println("Nous n'avons pas pu créer la requête.");
+        }
+    }
 }

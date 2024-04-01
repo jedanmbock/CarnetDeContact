@@ -5,7 +5,10 @@
  */
 package core;
 
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Date;
 
 /**
  *
@@ -65,4 +68,21 @@ public class Agent extends Contact{
         this.occupation = occupation;
     }
     
+    @Override
+    public void insertIntoBD(Connection connect){
+        try{
+            Statement statement = connect.createStatement();
+            statement.executeUpdate("insert into Agent values ('"+super.getCode()+
+                    "','"+super.getNom()+"','"+super.getDateNaissance()+
+                    "','"+super.getAddress()+"','"+
+                    super.getEmail()+"','"+
+                    super.getTelNumber()+"','"+salaire+
+                    "','"+statut+"','"+
+                    categorie+"','"+
+                    indiceSalaire+"','"+
+                    occupation+"');");
+        }catch(SQLException sqlex){
+            System.out.println("Nous n'avons pas pu créer la requête.");
+        }
+    }
 }

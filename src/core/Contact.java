@@ -5,13 +5,14 @@
  */
 package core;
 
-import java.util.Date;
+import java.sql.Connection;
+import java.sql.Date;
 
 /**
  *
  * @author JD
  */
-public class Contact {
+public abstract class Contact {
     private String code, nom, address, email, telNumber;
     private Date dateNaissance;
 
@@ -72,4 +73,5 @@ public class Contact {
         this.dateNaissance = dateNaissance;
     }
     
+    public abstract void insertIntoBD(Connection connect);
 }
