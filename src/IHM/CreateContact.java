@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package IHM;
-
+import core.*;
+import java.sql.Date;
 /**
  *
  * @author JD
@@ -16,6 +17,7 @@ public class CreateContact extends javax.swing.JFrame {
      */
     public CreateContact() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -27,38 +29,432 @@ public class CreateContact extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        enseignantPanel = new javax.swing.JPanel();
+        statutLabel = new javax.swing.JLabel();
+        statutField = new javax.swing.JTextField();
+        generalInfoPanel = new javax.swing.JPanel();
+        codeLabel = new javax.swing.JLabel();
+        nomLabel = new javax.swing.JLabel();
+        birthLabel = new javax.swing.JLabel();
+        adresseLabel = new javax.swing.JLabel();
+        codeField = new javax.swing.JTextField();
+        nomField = new javax.swing.JTextField();
+        dayField = new javax.swing.JTextField();
+        monthField = new javax.swing.JTextField();
+        yearField = new javax.swing.JTextField();
+        adresseField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
+        numTelLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        numTelField = new javax.swing.JTextField();
+        typeContact = new javax.swing.JComboBox<>();
+        typeLabel = new javax.swing.JLabel();
+        dayLabel = new javax.swing.JLabel();
+        monthLabel = new javax.swing.JLabel();
+        yearLabel = new javax.swing.JLabel();
+        agentPanel = new javax.swing.JPanel();
+        salaireLabel = new javax.swing.JLabel();
+        statutAgentLabel = new javax.swing.JLabel();
+        categorieLabel = new javax.swing.JLabel();
+        indiceLabel = new javax.swing.JLabel();
+        occupationLabel = new javax.swing.JLabel();
+        salaireField = new javax.swing.JTextField();
+        statutAgentField = new javax.swing.JTextField();
+        categorieField = new javax.swing.JTextField();
+        indiceField = new javax.swing.JTextField();
+        occupationField = new javax.swing.JTextField();
+        etudiantPanel = new javax.swing.JPanel();
+        cycleLabel = new javax.swing.JLabel();
+        cycleField = new javax.swing.JTextField();
+        buttonPanel = new javax.swing.JPanel();
+        validationButton = new javax.swing.JButton();
+        eraseButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setTitle("Nouveau contact");
         setAlwaysOnTop(true);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        enseignantPanel.setBackground(new java.awt.Color(204, 204, 255));
+        enseignantPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pour Enseignants", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara", 1, 18), new java.awt.Color(0, 0, 102))); // NOI18N
+
+        statutLabel.setText("Statut :");
+
+        javax.swing.GroupLayout enseignantPanelLayout = new javax.swing.GroupLayout(enseignantPanel);
+        enseignantPanel.setLayout(enseignantPanelLayout);
+        enseignantPanelLayout.setHorizontalGroup(
+            enseignantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enseignantPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(statutLabel)
+                .addGap(75, 75, 75)
+                .addComponent(statutField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
+        enseignantPanelLayout.setVerticalGroup(
+            enseignantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(enseignantPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(enseignantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statutLabel)
+                    .addComponent(statutField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        generalInfoPanel.setBackground(new java.awt.Color(204, 204, 255));
+        generalInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informations générales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara", 1, 18), new java.awt.Color(0, 0, 102))); // NOI18N
+
+        codeLabel.setText("Code :");
+
+        nomLabel.setText("Nom :");
+
+        birthLabel.setText("Date de naissance :");
+
+        adresseLabel.setText("Adresse :");
+
+        codeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codeFieldActionPerformed(evt);
+            }
+        });
+
+        emailLabel.setText("Email");
+
+        numTelLabel.setText("Numero de téléphone");
+
+        typeContact.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Etudiant", "Enseignant", "Agent" }));
+        typeContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeContactActionPerformed(evt);
+            }
+        });
+
+        typeLabel.setText("Type du contact");
+
+        dayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dayLabel.setText("DD");
+
+        monthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        monthLabel.setText("MM");
+
+        yearLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        yearLabel.setText("YY");
+
+        javax.swing.GroupLayout generalInfoPanelLayout = new javax.swing.GroupLayout(generalInfoPanel);
+        generalInfoPanel.setLayout(generalInfoPanelLayout);
+        generalInfoPanelLayout.setHorizontalGroup(
+            generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                            .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(codeLabel)
+                                .addComponent(nomLabel))
+                            .addGap(99, 99, 99)
+                            .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(codeField, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(nomField)))
+                        .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                            .addComponent(birthLabel)
+                            .addGap(36, 36, 36)
+                            .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                                .addComponent(dayField))
+                            .addGap(18, 18, 18)
+                            .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                                    .addComponent(monthField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, Short.MAX_VALUE))
+                                .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                                    .addComponent(monthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(23, 23, 23)))
+                            .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(yearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)))
+                    .addComponent(typeLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adresseLabel)
+                            .addComponent(emailLabel)
+                            .addComponent(numTelLabel))
+                        .addGap(48, 48, 48)
+                        .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(adresseField, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(emailField)
+                            .addComponent(numTelField)))
+                    .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(typeContact, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        generalInfoPanelLayout.setVerticalGroup(
+            generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalInfoPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codeLabel)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adresseLabel)
+                    .addComponent(adresseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomLabel)
+                    .addComponent(nomField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(birthLabel)
+                    .addComponent(dayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numTelLabel)
+                    .addComponent(numTelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dayLabel)
+                    .addComponent(monthLabel)
+                    .addComponent(yearLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(generalInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(typeContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typeLabel)))
+        );
+
+        agentPanel.setBackground(new java.awt.Color(204, 204, 255));
+        agentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pour Agents", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara", 1, 18), new java.awt.Color(0, 0, 102))); // NOI18N
+
+        salaireLabel.setText("Salaire");
+
+        statutAgentLabel.setText("Statut");
+
+        categorieLabel.setText("Categorie");
+
+        indiceLabel.setText("Indice de Salaire");
+
+        occupationLabel.setText("Occupation");
+
+        occupationField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                occupationFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout agentPanelLayout = new javax.swing.GroupLayout(agentPanel);
+        agentPanel.setLayout(agentPanelLayout);
+        agentPanelLayout.setHorizontalGroup(
+            agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salaireLabel)
+                    .addComponent(statutAgentLabel))
+                .addGap(30, 30, 30)
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(statutAgentField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(salaireField))
+                .addGap(63, 63, 63)
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(categorieLabel)
+                    .addComponent(indiceLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(33, 33, 33)
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(categorieField)
+                    .addComponent(indiceField, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agentPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(occupationLabel)
+                .addGap(29, 29, 29)
+                .addComponent(occupationField, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        agentPanelLayout.setVerticalGroup(
+            agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(agentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salaireLabel)
+                    .addComponent(categorieLabel)
+                    .addComponent(salaireField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categorieField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(agentPanelLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(occupationLabel)
+                            .addComponent(occupationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(statutAgentLabel)
+                            .addComponent(indiceLabel)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, agentPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(agentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(indiceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(statutAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
+        );
+
+        etudiantPanel.setBackground(new java.awt.Color(204, 204, 255));
+        etudiantPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pour Etudiants", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Candara", 1, 18), new java.awt.Color(0, 0, 102))); // NOI18N
+
+        cycleLabel.setText("Cycle d'étude :");
+
+        javax.swing.GroupLayout etudiantPanelLayout = new javax.swing.GroupLayout(etudiantPanel);
+        etudiantPanel.setLayout(etudiantPanelLayout);
+        etudiantPanelLayout.setHorizontalGroup(
+            etudiantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(etudiantPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cycleLabel)
+                .addGap(40, 40, 40)
+                .addComponent(cycleField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        etudiantPanelLayout.setVerticalGroup(
+            etudiantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, etudiantPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(etudiantPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cycleLabel)
+                    .addComponent(cycleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        buttonPanel.setBackground(new java.awt.Color(204, 204, 255));
+
+        validationButton.setText("OK");
+        validationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validationButtonActionPerformed(evt);
+            }
+        });
+
+        eraseButton.setText("Réinitialiser");
+        eraseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eraseButtonActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("Accueil");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
+        buttonPanel.setLayout(buttonPanelLayout);
+        buttonPanelLayout.setHorizontalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(30, 30, 30)
+                .addComponent(eraseButton)
+                .addGap(18, 18, 18)
+                .addComponent(validationButton)
+                .addGap(28, 28, 28))
+        );
+        buttonPanelLayout.setVerticalGroup(
+            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(validationButton)
+                    .addComponent(eraseButton)
+                    .addComponent(backButton))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(generalInfoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(agentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(enseignantPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(etudiantPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(generalInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(etudiantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(enseignantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(agentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void codeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codeFieldActionPerformed
+
+    private void occupationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occupationFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_occupationFieldActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void typeContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeContactActionPerformed
+
+    private void eraseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eraseButtonActionPerformed
+        this.codeField.setText("");
+        this.nomField.setText("");
+        this.adresseField.setText("");
+        this.categorieField.setText("");
+        this.cycleField.setText("");
+        this.dayField.setText("");
+        this.emailField.setText("");
+        this.indiceField.setText("");
+        this.monthField.setText("");
+        this.numTelField.setText("");
+        this.occupationField.setText("");
+        this.salaireField.setText("");
+        this.statutAgentField.setText("");
+        this.statutField.setText("");
+        this.yearField.setText("");
+    }//GEN-LAST:event_eraseButtonActionPerformed
+
+    private void validationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validationButtonActionPerformed
+        int type = typeContact.getSelectedIndex();
+        String code = codeField.getText();
+        String nom = nomField.getText();
+        Date date = new Date(Integer.parseInt(yearField.getText())-1900,Integer.parseInt(monthField.getText())-1,Integer.parseInt(dayField.getText()));
+        String adresse = adresseField.getText();
+        String email = emailField.getText();
+        String numTel = numTelField.getText();
+        switch(type){
+            case 0:
+                nouveau = new Etudiant(code,nom,date,adresse,email,numTel,cycleField.getText());
+                break;
+            case 1:
+                nouveau = new Enseignant(code,nom,date,adresse,email,numTel,statutField.getText());
+                break;
+            case 2:
+                nouveau = new Agent(code,nom,date,adresse,email,numTel,Integer.parseInt(salaireField.getText()),
+                        Integer.parseInt(indiceField.getText()), statutAgentField.getText(),categorieField.getText(),occupationField.getText());
+                break;
+        }
+    }//GEN-LAST:event_validationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,7 +491,51 @@ public class CreateContact extends javax.swing.JFrame {
         });
     }
 
+    public Contact getNouveau() {
+        return nouveau;
+    }
+    private Contact nouveau;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField adresseField;
+    private javax.swing.JLabel adresseLabel;
+    private javax.swing.JPanel agentPanel;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel birthLabel;
+    private javax.swing.JPanel buttonPanel;
+    private javax.swing.JTextField categorieField;
+    private javax.swing.JLabel categorieLabel;
+    private javax.swing.JTextField codeField;
+    private javax.swing.JLabel codeLabel;
+    private javax.swing.JTextField cycleField;
+    private javax.swing.JLabel cycleLabel;
+    private javax.swing.JTextField dayField;
+    private javax.swing.JLabel dayLabel;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JPanel enseignantPanel;
+    private javax.swing.JButton eraseButton;
+    private javax.swing.JPanel etudiantPanel;
+    private javax.swing.JPanel generalInfoPanel;
+    private javax.swing.JTextField indiceField;
+    private javax.swing.JLabel indiceLabel;
+    private javax.swing.JTextField monthField;
+    private javax.swing.JLabel monthLabel;
+    private javax.swing.JTextField nomField;
+    private javax.swing.JLabel nomLabel;
+    private javax.swing.JTextField numTelField;
+    private javax.swing.JLabel numTelLabel;
+    private javax.swing.JTextField occupationField;
+    private javax.swing.JLabel occupationLabel;
+    private javax.swing.JTextField salaireField;
+    private javax.swing.JLabel salaireLabel;
+    private javax.swing.JTextField statutAgentField;
+    private javax.swing.JLabel statutAgentLabel;
+    private javax.swing.JTextField statutField;
+    private javax.swing.JLabel statutLabel;
+    private javax.swing.JComboBox<String> typeContact;
+    private javax.swing.JLabel typeLabel;
+    private javax.swing.JButton validationButton;
+    private javax.swing.JTextField yearField;
+    private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
 }

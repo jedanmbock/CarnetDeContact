@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package IHM;
-
+import core.*;
 /**
  *
  * @author JD
@@ -27,21 +27,90 @@ public class MainFrmApplication extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        container = new javax.swing.JPanel();
+        bandImage = new javax.swing.JLabel();
+        welcomeText = new javax.swing.JLabel();
+        newContactButton = new javax.swing.JButton();
+        listContactButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Contact app - Accueil");
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 2000));
+
+        container.setBackground(new java.awt.Color(255, 255, 255));
+
+        bandImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IHM/logo.ico.jpg"))); // NOI18N
+
+        welcomeText.setFont(new java.awt.Font("Bodoni MT Black", 2, 36)); // NOI18N
+        welcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeText.setText("Carnet de contacts");
+
+        newContactButton.setText("Nouveau contact");
+        newContactButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newContactButtonActionPerformed(evt);
+            }
+        });
+
+        listContactButton.setText("Liste de contacts");
+        listContactButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listContactButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerLayout.createSequentialGroup()
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(containerLayout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
+                    .addGroup(containerLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(newContactButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listContactButton)))
+                .addGap(241, 241, 241))
+            .addComponent(bandImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerLayout.createSequentialGroup()
+                .addComponent(bandImage, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(welcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(227, 227, 227)
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newContactButton)
+                    .addComponent(listContactButton))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newContactButtonActionPerformed
+        CreateContact createFrame = new CreateContact();
+        liste.ajouterContact(createFrame.getNouveau());
+    }//GEN-LAST:event_newContactButtonActionPerformed
+
+    private void listContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listContactButtonActionPerformed
+        AfficheContact listeContact = new AfficheContact();
+    }//GEN-LAST:event_listContactButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +146,12 @@ public class MainFrmApplication extends javax.swing.JFrame {
             }
         });
     }
-
+    Repertoire liste = new Repertoire();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bandImage;
+    private javax.swing.JPanel container;
+    private javax.swing.JButton listContactButton;
+    private javax.swing.JButton newContactButton;
+    private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }
