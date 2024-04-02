@@ -42,6 +42,8 @@ public class Etudiant extends Contact{
         }catch(SQLException sqlex){
             System.out.println("Nous n'avons pas pu créer la requête.");
             sqlex.printStackTrace();
+        }catch(Exception e){
+            System.out.println("Problème avec la requête.");
         }
     }
 }

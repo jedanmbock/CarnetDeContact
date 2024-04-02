@@ -201,7 +201,6 @@ public class AfficheContact extends javax.swing.JFrame {
     public  void insertContact(Repertoire repertoire){
         ArrayList<Contact> listeTemp = repertoire.getRepertoire();
         Object[][] temp = new Object[listeTemp.size()+6][6];
-        System.out.println(listeTemp.get(0).getCode());
         for(int i = 0;i<listeTemp.size();i++){
             temp[i][0] = listeTemp.get(i).getCode();
             temp[i][1] = listeTemp.get(i).getNom();
@@ -209,7 +208,6 @@ public class AfficheContact extends javax.swing.JFrame {
             temp[i][3] = listeTemp.get(i).getAddress();
             temp[i][4] = listeTemp.get(i).getEmail();
             temp[i][5] = listeTemp.get(i).getTelNumber();
-            i++;
         }
         tableContacts.setModel(new javax.swing.table.DefaultTableModel(
             temp,

@@ -41,6 +41,8 @@ public class Enseignant extends Contact{
                     super.getTelNumber()+"','"+statut+"');");
         }catch(SQLException sqlex){
             System.out.println("Nous n'avons pas pu créer la requête.");
+        }catch(Exception e){
+            System.out.println("Problème avec la requête.");
         }
     }
 }
