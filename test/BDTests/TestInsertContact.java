@@ -27,14 +27,14 @@ public class TestInsertContact {
         Agent agent = new Agent("003","agent",new Date(0, 02, 02),"Yaounde","def@gmail.com","622222222",500000,12,"temporaire","A9","Professeur");
 
         try{
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         }catch (Exception ex){
             System.out.println("Erreur de chargement du driver");
         }
         Connection conn = null;
         String user = "root";//Dans mon cas
         String password = "Qosascomp20?";
-        String port = "3306";
+        String port = "8000";
         //S'assurer de mettre en route le serveur MySQL avant d'exécuter
         try{
             conn= DriverManager.getConnection("jdbc:mysql://localhost:"+port+"/Contact?"+"user="+user+"&password="+password);
@@ -53,7 +53,7 @@ public class TestInsertContact {
                 try{
                     conn.close();
                 }catch(SQLException sqlex){
-                    System.out.println("Nous n'avons pas pu ffermé la connexion!!!");
+                    System.out.println("Nous n'avons pas pu fermé la connexion!!!");
                 }
             }
         }

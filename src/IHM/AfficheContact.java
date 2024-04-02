@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package IHM;
-
+import core.*;
+import java.util.ArrayList;
 /**
  *
  * @author JD
@@ -159,6 +160,14 @@ public class AfficheContact extends javax.swing.JFrame {
         });
         tableContacts.setGridColor(new java.awt.Color(204, 255, 255));
         jScrollPane1.setViewportView(tableContacts);
+        if (tableContacts.getColumnModel().getColumnCount() > 0) {
+            tableContacts.getColumnModel().getColumn(0).setHeaderValue("Code");
+            tableContacts.getColumnModel().getColumn(1).setHeaderValue("Nom");
+            tableContacts.getColumnModel().getColumn(2).setHeaderValue("Date de naissance");
+            tableContacts.getColumnModel().getColumn(3).setHeaderValue("Adresse");
+            tableContacts.getColumnModel().getColumn(4).setHeaderValue("Email");
+            tableContacts.getColumnModel().getColumn(5).setHeaderValue("Numero de téléphone");
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +197,42 @@ public class AfficheContact extends javax.swing.JFrame {
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
+    
+    public  void insertContact(Repertoire repertoire){
+        ArrayList<Contact> listeTemp = repertoire.getRepertoire();
+        Object[][] temp = new Object[listeTemp.size()+6][6];
+        System.out.println(listeTemp.get(0).getCode());
+        for(int i = 0;i<listeTemp.size();i++){
+            temp[i][0] = listeTemp.get(i).getCode();
+            temp[i][1] = listeTemp.get(i).getNom();
+            temp[i][2] = listeTemp.get(i).getDateNaissance();
+            temp[i][3] = listeTemp.get(i).getAddress();
+            temp[i][4] = listeTemp.get(i).getEmail();
+            temp[i][5] = listeTemp.get(i).getTelNumber();
+            i++;
+        }
+        tableContacts.setModel(new javax.swing.table.DefaultTableModel(
+            temp,
+            new String [] {
+                "Code", "Nom", "Date de naissance", "Adresse", "Email", "Numero de téléphone"
+            }
+        ){
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+    }
     /**
      * @param args the command line arguments
      */

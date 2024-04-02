@@ -11,7 +11,10 @@ import java.sql.Date;
  * @author JD
  */
 public class CreateContact extends javax.swing.JFrame {
-
+    private Contact nouveau;
+    public Contact getNouveau() {
+        return nouveau;
+    }
     /**
      * Creates new form CreateContact
      */
@@ -491,10 +494,6 @@ public class CreateContact extends javax.swing.JFrame {
         });
     }
 
-    public Contact getNouveau() {
-        return nouveau;
-    }
-    private Contact nouveau;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField adresseField;
     private javax.swing.JLabel adresseLabel;

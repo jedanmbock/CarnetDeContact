@@ -5,12 +5,19 @@
  */
 package IHM;
 import core.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 /**
  *
  * @author JD
  */
 public class MainFrmApplication extends javax.swing.JFrame {
 
+    static Connection connect;
+    static Repertoire liste = new Repertoire();
+    static CreateContact createFrame;
+    static AfficheContact listeContact;
     /**
      * Creates new form MainFrmApplication
      */
@@ -32,10 +39,19 @@ public class MainFrmApplication extends javax.swing.JFrame {
         welcomeText = new javax.swing.JLabel();
         newContactButton = new javax.swing.JButton();
         listContactButton = new javax.swing.JButton();
+        storageButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contact app - Accueil");
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 900, 2000));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                onWindowsClosed(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                onWindowsClosed(evt);
+            }
+        });
 
         container.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -59,6 +75,13 @@ public class MainFrmApplication extends javax.swing.JFrame {
             }
         });
 
+        storageButton.setText("Enregistrer");
+        storageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                storageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
@@ -67,11 +90,13 @@ public class MainFrmApplication extends javax.swing.JFrame {
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerLayout.createSequentialGroup()
                         .addGap(206, 206, 206)
-                        .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
+                        .addComponent(welcomeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(containerLayout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(newContactButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(95, 95, 95)
+                        .addComponent(storageButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addComponent(listContactButton)))
                 .addGap(241, 241, 241))
             .addComponent(bandImage, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -85,7 +110,8 @@ public class MainFrmApplication extends javax.swing.JFrame {
                 .addGap(227, 227, 227)
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newContactButton)
-                    .addComponent(listContactButton))
+                    .addComponent(listContactButton)
+                    .addComponent(storageButton))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -104,14 +130,56 @@ public class MainFrmApplication extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newContactButtonActionPerformed
-        CreateContact createFrame = new CreateContact();
-        liste.ajouterContact(createFrame.getNouveau());
+        boolean test = true;
+        if(createFrame == null){
+            createFrame = new CreateContact();
+        }else{
+            while(test){
+                if(createFrame!= null && createFrame.getNouveau()!= null){
+                    liste.ajouterContact(createFrame.getNouveau());
+                    test = false;
+                }
+            }
+            createFrame.setVisible(true);
+        }
     }//GEN-LAST:event_newContactButtonActionPerformed
 
     private void listContactButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listContactButtonActionPerformed
-        AfficheContact listeContact = new AfficheContact();
+        boolean test = true;
+        if(listeContact == null){
+            listeContact = new AfficheContact();
+        }else{
+            while(test){
+                if(listeContact!= null && createFrame.getNouveau()!= null){
+                    listeContact.insertContact(liste);
+                    test = false;
+                }
+            }
+            listeContact.setVisible(true);
+        }
     }//GEN-LAST:event_listContactButtonActionPerformed
 
+    private void storageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storageButtonActionPerformed
+        
+        this.enregistrer(connect);
+    }//GEN-LAST:event_storageButtonActionPerformed
+
+    private void onWindowsClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_onWindowsClosed
+        if(connect!=null){
+            try{
+                connect.close();
+                System.out.println("Connexion fermée.");
+            }catch(SQLException sqlex){
+                System.out.println("Nous n'avons pas pu fermer la connexion.");
+            }
+        }
+    }//GEN-LAST:event_onWindowsClosed
+
+    private void enregistrer(Connection connect){
+        for(Contact contact:liste.getRepertoire()){
+            contact.insertIntoBD(connect);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -145,13 +213,34 @@ public class MainFrmApplication extends javax.swing.JFrame {
                 new MainFrmApplication().setVisible(true);
             }
         });
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        }catch (Exception ex){
+            System.out.println("Erreur de chargement du driver");
+        }
+        String user = "root";//Dans mon cas
+        String password = "Qosascomp20?";
+        String port = "3306";
+        //S'assurer de mettre en route le serveur MySQL avant d'exécuter
+        try{
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:"+port+"/Contact?"+"user="+user+"&password="+password);
+            
+        }catch(SQLException sqlex){
+            System.out.println("Un problème avec la requête est survenu!!!");
+            System.out.println(sqlex.getMessage());
+            sqlex.printStackTrace();
+        }catch(Exception e){
+            System.out.println("Un problème est survenu!!");
+            e.printStackTrace();
+        }
     }
-    Repertoire liste = new Repertoire();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bandImage;
     private javax.swing.JPanel container;
     private javax.swing.JButton listContactButton;
     private javax.swing.JButton newContactButton;
+    private javax.swing.JButton storageButton;
     private javax.swing.JLabel welcomeText;
     // End of variables declaration//GEN-END:variables
 }
