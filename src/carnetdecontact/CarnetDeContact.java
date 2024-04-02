@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package carnetdecontact;
-
+import IHM.*;
 /**
  *
  * @author JD
@@ -15,7 +15,8 @@ public class CarnetDeContact {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainFrmApplication fenetre = new MainFrmApplication();
+        fenetre.setVisible(true);
     }
     
 }
